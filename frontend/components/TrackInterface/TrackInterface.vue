@@ -61,7 +61,7 @@ const searchTrigger = ref(null);
 const searchQuery = ref("");
 
 const handleClickOutside = (event) => {
-  if (!searchInput.value.contains(event.target) && searching.value) {
+  if (!searchInput.value?.contains(event.target) && searching.value) {
     searching.value = false;
   }
   if (searchTrigger.value.contains(event.target)) {

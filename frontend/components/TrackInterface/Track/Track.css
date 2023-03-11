@@ -1,0 +1,25 @@
+.track:hover {
+  background-color: rgba(232, 87, 39, 0.5);
+  cursor: pointer;
+}
+.track.selected {
+  background: #e85627;
+}
+.track__container {
+  display: flex;
+  width: 92%;
+  user-select: none;
+}
+.track__number {
+  margin-right: 1rem;
+  width: 5%;
+}
+.track__title {
+  width: 70%;
+}
+.track__duration {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

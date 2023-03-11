@@ -24,6 +24,7 @@ export const useAudioStore = defineStore("AudioStore", () => {
 
   const handlePlay = () => {
     audioElement.value.src = `http://localhost:5000/uploads/${currentTrack.value.title}`;
+    audioElement.value.currentTime = trackProgress.value;
     if (!recordPlayerOn.value) recordPlayerOn.value = true;
     duration.value = currentTrack.value.seconds;
     audioElement.value.play();
