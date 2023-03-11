@@ -1,0 +1,39 @@
+button {
+  all: unset;
+}
+
+button.simple {
+  width: 60%;
+  border-radius: 1rem;
+  border-top: rgb(255, 255, 255) solid 1px;
+  border-left: rgb(255, 255, 255) solid 1px;
+  background: #212121;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.343);
+  height: 20%;
+  /* box-shadow: 0.5px 0.5px 0.5px black; */
+}
+button.simple.on {
+  border-top: none;
+  border-left: none;
+  background: #414141;
+  box-shadow: none;
+  /* box-shadow: 0.5px 0.5px 0.5px black; */
+}
+
+button.television-power-button {
+  width: 16%;
+  height: 50%;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  border: rgb(39, 39, 39) solid 1px;
+  background: #3e3e3e;
+  box-shadow: 0.5px 0.5px 0.5px black;
+}
+button.television-power-button.on {
+  border: none;
+  box-shadow: 0px 0px 0px black;
+}
+
+button:hover {
+  cursor: pointer;
+}

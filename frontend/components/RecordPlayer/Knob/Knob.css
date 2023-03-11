@@ -1,0 +1,31 @@
+.knob {
+  position: absolute;
+}
+.drag-container:hover {
+  cursor: pointer;
+}
+.knob.balance {
+  left: 51.1%;
+  width: 5.5%;
+  bottom: 22.1%;
+}
+.knob.bass {
+  left: 29.3%;
+  width: 5.6%;
+  bottom: 22.8%;
+}
+.knob.power {
+  bottom: 22%;
+  left: 13%;
+  width: 6%;
+}
+.knob.treble {
+  left: 40.6%;
+  width: 5.6%;
+  bottom: 22.8%;
+}
+.knob.volume {
+  bottom: 22%;
+  right: 20.4%;
+  width: 5.9%;
+}
