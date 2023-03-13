@@ -45,34 +45,5 @@ const handleClick = () => {
 </script>
 
 <style>
-html {
-  height: 100vh;
-}
-body {
-  background: linear-gradient(90deg, #2b5983, #67b9a9);
-  margin: 0;
-  overflow: hidden;
-  font-family: "Open Sans", sans-serif;
-  color: #fbfbfb;
-  height: 100%;
-}
-#__nuxt {
-  height: 100%;
-}
-#app-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-#media-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 70%;
-}
-#permission-text {
-  max-width: 19ch;
-  text-align: center;
-}
+@import "./app.css";
 </style>

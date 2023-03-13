@@ -4,20 +4,28 @@ import { useVisualisationStore } from "./VisualisationStore";
 export const useAudioStore = defineStore("AudioStore", () => {
   const visualisationStore = useVisualisationStore();
 
-  const ampOn = ref(false);
-  const audioElement = ref(null);
-  const currentTrack = ref({
-    title: null,
-    index: null,
-    seconds: null,
-    duration: null,
+  interface ITrack {
+    title: string;
+    index: number;
+    seconds: string;
+    duration: string;
+  }
+
+  const currentTrack = ref<ITrack>({
+    title: "",
+    index: 0,
+    seconds: "",
+    duration: "",
   });
-  const duration = ref(0);
-  const initialTrackList = ref([]);
-  const currentTrackList = ref([]);
+
+  const ampOn = ref(false);
+  const audioElement = ref<HTMLMediaElement>();
+  const duration = ref("");
+  const initialTrackList = ref<ITrack[]>([]);
+  const currentTrackList = ref<ITrack[]>([]);
   const recordPlayerOn = ref(false);
   const volume = ref(0.5);
-  const intervalRef = ref(null);
+  const intervalRef = ref(0);
   const trackProgress = ref(0);
   const trackProgressMinutes = computed(() => {
     const minutes = Math.floor(trackProgress.value / 60);
@@ -26,23 +34,23 @@ export const useAudioStore = defineStore("AudioStore", () => {
   });
 
   const handlePlay = () => {
-    audioElement.value.src = `http://localhost:5000/uploads/${currentTrack.value.title}`;
-    audioElement.value.currentTime = trackProgress.value;
+    audioElement.value!.src = `http://localhost:5000/uploads/${currentTrack.value.title}`;
+    audioElement.value!.currentTime = trackProgress.value;
     if (!recordPlayerOn.value) recordPlayerOn.value = true;
     duration.value = currentTrack.value.seconds;
-    audioElement.value.play();
+    audioElement.value!.play();
     visualisationStore.waveformTick();
     startTimer();
   };
 
-  const handleScrub = (time) => {
+  const handleScrub = (time: number) => {
     clearInterval(intervalRef.value);
-    audioElement.value.currentTime = time;
-    trackProgress.value = audioElement.value.currentTime;
+    audioElement.value!.currentTime = time;
+    trackProgress.value = audioElement.value!.currentTime;
     startTimer();
   };
 
-  const handleTrackSelect = (index) => {
+  const handleTrackSelect = (index: number) => {
     currentTrack.value = currentTrackList.value[index];
     currentTrack.value.index = index;
     trackProgress.value = 0;
@@ -64,28 +72,28 @@ export const useAudioStore = defineStore("AudioStore", () => {
 
   const startTimer = () => {
     clearInterval(intervalRef.value);
-    intervalRef.value = setInterval(() => {
-      audioElement.value.ended
+    intervalRef.value = window.setInterval(() => {
+      audioElement.value!.ended
         ? toNextTrack()
-        : (trackProgress.value = audioElement.value.currentTime);
-    }, [1000]);
+        : (trackProgress.value = audioElement.value!.currentTime);
+    }, 1000);
   };
 
   watch(
     () => recordPlayerOn.value,
-    (newValue) => (newValue ? handlePlay() : audioElement.value.pause())
+    (newValue) => (newValue ? handlePlay() : audioElement.value!.pause())
   );
   watch(
     () => ampOn.value,
     (newValue) =>
       newValue
-        ? (audioElement.value.volume = volume.value)
-        : (audioElement.value.volume = 0)
+        ? (audioElement.value!.volume = volume.value)
+        : (audioElement.value!.volume = 0)
   );
   watch(
     () => volume.value,
     (newValue) => {
-      if (ampOn.value) audioElement.value.volume = newValue;
+      if (ampOn.value) audioElement.value!.volume = newValue;
     }
   );
   return {

@@ -26,7 +26,9 @@ const displayCanvas = computed(() => {
     return { display: "none" };
 });
 
-const draw = (waveformData) => {
+const draw = (waveformData) => {};
+
+const drawWaveform = (waveFormData) => {
   const randomIndex = Math.floor(Math.random() * (6 - 1 + 1) + 1);
   const randomIndexTwo = Math.floor(Math.random() * (6 - 1 + 1) + 1);
 
