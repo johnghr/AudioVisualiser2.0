@@ -30,7 +30,7 @@
         :value="audioStore.trackProgress"
         @on-change="(event) => audioStore.handleScrub(event.target.value)"
       />
-      <p v-if="audioStore.recordPlayerOn">
+      <p>
         {{ audioStore.trackProgressMinutes }} /
         {{ audioStore.currentTrack.duration }}
       </p>

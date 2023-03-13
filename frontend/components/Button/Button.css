@@ -2,6 +2,17 @@ button {
   all: unset;
 }
 
+button.primary {
+  font-weight: bold;
+  background: #e85627;
+  border: solid 2px #fbfbfb;
+  padding: 0.75rem 40%;
+  border-radius: 0.25rem;
+}
+button.primary:hover {
+  background-color: rgba(232, 87, 39, 0.85);
+  cursor: pointer;
+}
 button.simple {
   width: 60%;
   border-radius: 1rem;

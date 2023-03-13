@@ -1,6 +1,9 @@
 import { defineStore } from "pinia";
+import { useVisualisationStore } from "./VisualisationStore";
 
 export const useAudioStore = defineStore("AudioStore", () => {
+  const visualisationStore = useVisualisationStore();
+
   const ampOn = ref(false);
   const audioElement = ref(null);
   const currentTrack = ref({
@@ -28,6 +31,7 @@ export const useAudioStore = defineStore("AudioStore", () => {
     if (!recordPlayerOn.value) recordPlayerOn.value = true;
     duration.value = currentTrack.value.seconds;
     audioElement.value.play();
+    visualisationStore.waveformTick();
     startTimer();
   };
 
@@ -41,6 +45,7 @@ export const useAudioStore = defineStore("AudioStore", () => {
   const handleTrackSelect = (index) => {
     currentTrack.value = currentTrackList.value[index];
     currentTrack.value.index = index;
+    trackProgress.value = 0;
     handlePlay();
   };
 

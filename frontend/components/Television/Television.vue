@@ -1,15 +1,24 @@
 <template>
   <div id="television">
-    <div id="test-canvas" :class="televisionOn && 'static'" />
+    <div
+      id="test-canvas"
+      :class="visualisationStore.televisionOn && 'static'"
+    />
+    <TelevisionVisualiserCanvas />
     <div id="television__power-button">
-      <div id="television__power-indicator" :class="televisionOn && 'on'" />
+      <div
+        id="television__power-indicator"
+        :class="visualisationStore.televisionOn && 'on'"
+      />
       <Button
         :variant="
-          televisionOn
+          visualisationStore.televisionOn
             ? 'television-power-button on'
             : 'television-power-button'
         "
-        @click="televisionOn = !televisionOn"
+        @click="
+          visualisationStore.televisionOn = !visualisationStore.televisionOn
+        "
       >
       </Button>
     </div>
@@ -18,7 +27,9 @@
 </template>
 
 <script setup>
-const televisionOn = ref(false);
+import { useVisualisationStore } from "~~/stores/VisualisationStore";
+
+const visualisationStore = useVisualisationStore();
 </script>
 
 <style>
