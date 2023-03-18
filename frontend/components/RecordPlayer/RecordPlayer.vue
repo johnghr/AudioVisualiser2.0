@@ -4,14 +4,22 @@
       <div class="record-player__button" id="stop">
         <p class="record-player__text">START</p>
         <Button
-          :variant="audioStore.recordPlayerOn ? 'simple on' : 'simple'"
+          :variant="
+            audioStore.recordPlayerOn
+              ? 'simple record-player on'
+              : 'simple record-player'
+          "
           @click="audioStore.recordPlayerOn = true"
         />
       </div>
       <div class="record-player__button" id="start">
         <p class="record-player__text">STOP</p>
         <Button
-          :variant="!audioStore.recordPlayerOn ? 'simple on' : 'simple'"
+          :variant="
+            !audioStore.recordPlayerOn
+              ? 'simple on record-player'
+              : 'simple record-player'
+          "
           @click="audioStore.recordPlayerOn = false"
         />
       </div>

@@ -1,26 +1,20 @@
 import { defineStore } from "pinia";
+import { ITrack } from "~~/sharedTypes";
 import { useVisualisationStore } from "./VisualisationStore";
 
 export const useAudioStore = defineStore("AudioStore", () => {
   const visualisationStore = useVisualisationStore();
 
-  interface ITrack {
-    title: string;
-    index: number;
-    seconds: string;
-    duration: string;
-  }
-
   const currentTrack = ref<ITrack>({
     title: "",
     index: 0,
-    seconds: "",
-    duration: "",
+    seconds: 0,
+    duration: 0,
   });
 
   const ampOn = ref(false);
   const audioElement = ref<HTMLMediaElement>();
-  const duration = ref("");
+  const duration = ref(0);
   const initialTrackList = ref<ITrack[]>([]);
   const currentTrackList = ref<ITrack[]>([]);
   const recordPlayerOn = ref(false);
@@ -39,7 +33,7 @@ export const useAudioStore = defineStore("AudioStore", () => {
     if (!recordPlayerOn.value) recordPlayerOn.value = true;
     duration.value = currentTrack.value.seconds;
     audioElement.value!.play();
-    visualisationStore.waveformTick();
+    visualisationStore.handleTick();
     startTimer();
   };
 

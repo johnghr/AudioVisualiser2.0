@@ -37,7 +37,7 @@ const handleClick = () => {
   audioStore.audioElement.crossOrigin = "anonymous";
 
   audioStore.audioElement.volume = 0;
-  audioStore.audioElement.preload = "metada";
+  audioStore.audioElement.preload = "metadata";
   visualisationStore.audioContext = new AudioContext();
   permissionGiven.value = true;
   visualisationStore.connectAudioToAnalyser();

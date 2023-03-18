@@ -25,12 +25,12 @@ defineProps({
   max: {
     default: 100,
     required: false,
-    type: Number,
+    type: Number || String,
   },
   min: {
     default: 0,
     required: false,
-    type: Number,
+    type: Number || String,
   },
   step: {
     default: 1,

@@ -5,6 +5,18 @@
       :class="visualisationStore.televisionOn && 'static'"
     />
     <TelevisionVisualiserCanvas />
+    <IconCaretDown color="white" id="caret-down" />
+    <IconCaretUp color="white" id="caret-up" />
+    <Button
+      variant="simple tv"
+      id="channel-down-button"
+      @click="visualisationStore.setChannel('down')"
+    />
+    <Button
+      variant="simple tv"
+      id="channel-up-button"
+      @click="visualisationStore.setChannel('up')"
+    />
     <div id="television__power-button">
       <div
         id="television__power-indicator"
@@ -34,4 +46,5 @@ const visualisationStore = useVisualisationStore();
 
 <style>
 @import "./Television.css";
+@import "../../components/Button/Button.css";
 </style>

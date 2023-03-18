@@ -1,6 +1,9 @@
 button {
   all: unset;
 }
+button:hover {
+  cursor: pointer;
+}
 
 button.primary {
   font-weight: bold;
@@ -8,18 +11,15 @@ button.primary {
   border: solid 2px #fbfbfb;
   padding: 0.75rem 40%;
   border-radius: 0.25rem;
+  cursor: grab;
 }
 button.primary:hover {
   background-color: rgba(232, 87, 39, 0.85);
-  cursor: pointer;
+  cursor: grab;
 }
 button.simple {
-  width: 60%;
   border-radius: 1rem;
-  border-top: rgb(255, 255, 255) solid 1px;
-  border-left: rgb(255, 255, 255) solid 1px;
   background: #212121;
-  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.343);
   height: 20%;
   /* box-shadow: 0.5px 0.5px 0.5px black; */
 }
@@ -29,6 +29,18 @@ button.simple.on {
   background: #414141;
   box-shadow: none;
   /* box-shadow: 0.5px 0.5px 0.5px black; */
+}
+button.simple:hover {
+  cursor: pointer;
+}
+button.simple.tv {
+  margin: 1%;
+  width: 20%;
+}
+button.simple.record-player {
+  border-top: rgb(255, 255, 255) solid 1px;
+  border-left: rgb(255, 255, 255) solid 1px;
+  width: 60%;
 }
 
 button.television-power-button {
@@ -43,8 +55,4 @@ button.television-power-button {
 button.television-power-button.on {
   border: none;
   box-shadow: 0px 0px 0px black;
-}
-
-button:hover {
-  cursor: pointer;
 }
